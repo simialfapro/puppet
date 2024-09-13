@@ -5,5 +5,5 @@ node default {
 }
 
 node 'puppet-node.localdomain' {
-  include webserver
+  include apache
 }

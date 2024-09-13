@@ -1,4 +1,4 @@
-class webserver::install {
+class apache::install {
   package { 'httpd':
     ensure => installed,
   }

@@ -1,5 +1,5 @@
-class webserver {
-  include webserver::install
-  include webserver::config
-  include webserver::service
+class apache {
+  include apache::install
+  include apache::config
+  include apache::service
 }
