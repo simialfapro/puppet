@@ -1,0 +1,19 @@
+#@server_admin: E-Mail-Adresse des Server-Administrators.
+#@document_root : Das Verzeichnis, das als Dokumentwurzel für den virtuellen Host dient.
+#@server_name: Der Haupt-Server-Name für den virtuellen Host.
+#@server_alias: Alternative Server-Namen (z.B. www.example.com und example.com).
+
+<VirtualHost *:80>
+  ServerAdmin <%= @server_admin %>
+  DocumentRoot <%= @document_root %>
+  ServerName <%= @server_name %>
+  ServerAlias <%= @server_alias %>
+
+  <Directory "<%= @document_root %>">
+    AllowOverride All
+    Require all granted
+  </Directory>
+
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
