@@ -4,9 +4,9 @@ defaults:
   datadir: '/etc/puppet/code/environments/production/hieradata'
   data_hash: yaml_data
 hierarchy:
-  - name: "Common data"
-    path: "common.yaml"
   - name: "Node-specific data"
     path: "nodes/%{trusted.certname}.yaml"
+  - name: "Common data"
+    path: "common.yaml"
   - name: "Environment data"
     path: "common.yaml"

@@ -1,5 +1,15 @@
 ---
-apache::vhosts::server_admin: 'test@example.com'
-apache::vhosts::document_root: '/var/www/html'
-apache::vhosts::server_name: 'test.com'
-apache::vhosts::server_alias: 'www.example.com'
+apache::vhosts:
+  example1.com:
+    server_admin: 'test@example.com'
+    document_root: '/var/www/html'
+    server_name: 'test.com'
+    server_alias: 'www.example.com'
+  example2.com:
+    server_admin: 'admin@example.com'
+    document_root: '/var/www/html'
+    server_name: 'test2.com'
+    server_alias: 'www.example.com'
+
+
+

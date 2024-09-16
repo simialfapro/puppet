@@ -2,5 +2,4 @@
 include apache
 
 node 'puppet-node.localdomain' {
-
 }
