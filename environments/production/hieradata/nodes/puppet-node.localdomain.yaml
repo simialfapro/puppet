@@ -1,6 +1,6 @@
 apache::vhosts:
   example1.com:
-    servername: 'example1.com'
+    servername: 'example2.com'
     docroot: '/var/www/example1'
     port: '80'
     ssl: false
