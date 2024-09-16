@@ -1,5 +1,4 @@
 class apache::vhosts {
-  include apache::vhost
   # Lese die VHosts-Daten aus Hiera. Falls keine vorhanden sind, wird ein leeres Hash zurückgegeben.
   $vhosts = hiera_hash('apache::vhosts', {})
 
