@@ -2,7 +2,7 @@
 classes:
   - apache:vhost
  
-apache::vhosts:
+apache::vhost:
   servername: 'example2.com'
   docroot: '/var/www/example2'
   port: '80'
