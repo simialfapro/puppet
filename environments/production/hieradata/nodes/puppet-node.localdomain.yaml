@@ -1,5 +1,5 @@
 #---puppet-node.localdomain
 apache::vhosts::server_admin: 'test@example.com'
 apache::vhosts::document_root: '/var/www/html'
-apache::vhosts::server_name: 'test.example.com'
+apache::vhosts::server_name: 'test.com'
 apache::vhosts::server_alias: 'www.example.com'
