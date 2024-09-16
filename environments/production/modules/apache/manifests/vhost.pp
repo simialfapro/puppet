@@ -5,17 +5,9 @@ class apache::vhost (
   Optional[Boolean] $ssl = false,
 ) {
   # Erstelle die Konfigurationsdatei für den VHost
-  file { "/etc/apache2/sites-available/${servername}.conf":
+  file { "/etc/apache2/sites-enabled/${servername}.conf":
     ensure  => file,
-    content => template('apache/vhost.erb'),  # Verweis auf das Template
+    content => template('apache/vhost.conf.erb'),  # Verweis auf das Template
     notify  => Service['apache2'],  # Neustart von Apache nach Änderungen
-  }
-
-  # Aktiviere den VHost mit a2ensite
-  exec { "enable-${servername}":
-    command => "/usr/sbin/a2ensite ${servername}.conf",
-    unless  => "/bin/ls /etc/apache2/sites-enabled | grep ${servername}",
-    require => File["/etc/apache2/sites-available/${servername}.conf"],
-    notify  => Service['apache2'],
   }
 }
