@@ -1,19 +1,7 @@
-class apache::vhosts (
-  String $server_admin  = 'admin@example.com',
-  String $document_root = '/var/www/html',
-  String $server_name   = 'www.example.com',
-  String $server_alias  = 'example.com',
-) {
-
+class apache::vhosts {
+  # Lese die VHosts-Daten aus Hiera. Falls keine vorhanden sind, wird ein leeres Hash zurückgegeben.
   $vhosts = hiera_hash('apache::vhosts', {})
+
+  # Verwende `create_resources`, um dynamisch VHosts aus den Hiera-Daten zu erstellen
   create_resources('apache::vhost', $vhosts)
-  
-  file { '/etc/apache2/sites-available':
-    ensure => directory,
-    mode   => '0755',
-  }
-  file { '/etc/apache2/sites-available/000-default.conf':
-    ensure  => file,
-    content => template('apache/vhost.conf.erb'),
-  }
 }
