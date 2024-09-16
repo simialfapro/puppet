@@ -1,7 +1,7 @@
 class apache::config {
   file { '/etc/httpd/conf.d/vhost.conf':
     ensure  => file,
-    content => template('apache.conf.erb'),  #
+    content => template('apache/apache.conf.erb'),  #
     require => Package['httpd'],
   }
 
