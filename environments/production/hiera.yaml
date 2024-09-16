@@ -7,6 +7,6 @@ hierarchy:
   - name: "Common data"
     path: "common.yaml"
   - name: "Node-specific data"
-    path: "%{trusted.certname}.yaml"
+    path: "nodes/%{trusted.certname}.yaml"
   - name: "Environment data"
     path: "common.yaml"
