@@ -4,6 +4,10 @@ class apache::vhosts (
   String $server_name   = 'www.example.com',
   String $server_alias  = 'example.com',
 ) {
+
+  $vhosts = hiera_hash('apache::vhosts', {})
+  create_resources('apache::vhost', $vhosts)
+  
   file { '/etc/apache2/sites-available':
     ensure => directory,
     mode   => '0755',
