@@ -1,8 +1,8 @@
 class apache::vhost (
-  Array $servername,
-  Array $docroot,
-  Optional[String] $port = '80',
-  Optional[Array] $ssl = false,
+  Array[String] $servername,
+  Array[String] $docroot,
+  Optional[Array[String]] $port = '80', 
+  Optional[Array[Boolean]] $ssl = false,
 ) {
   # Erstelle die Konfigurationsdatei für den VHost
   file { "/etc/apache2/sites-enabled/${servername}.conf":
