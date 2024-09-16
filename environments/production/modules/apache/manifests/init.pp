@@ -4,11 +4,13 @@ class apache {
   include apache::service
   include apache::vhosts
   $vhosts = lookup('apache::vhosts')
-  apache::vhost { $vhosts:
-    servername => $vhosts['servername'],
-    docroot    => $vhosts['docroot'],
-    port       => $vhosts['port'],
-    ssl        => $vhosts['ssl'],
+  $vhosts.each |$vhost| {
+    apache::vhost { $vhost['servername']: 
+      servername => $vhost['servername'],
+      docroot    => $vhost['docroot'],
+      port       => $vhost['port'],
+      ssl        => $vhost['ssl'],
+    }
   }
 }
 
