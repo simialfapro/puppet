@@ -4,8 +4,8 @@ class apache {
   include apache::service
   include apache::vhosts
   class { "apache::vhost":
-    servername => lookup("apache::vhosts::servername")
-    docroot => docroot("apache::vhosts::docroot")
+    servername => lookup("apache::vhosts::servername"),
+    docroot    => lookup("apache::vhosts::docroot")
   }
 }
 
