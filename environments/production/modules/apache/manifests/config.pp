@@ -3,7 +3,7 @@ class apache::config {
     ensure  => file,
     content => template('apache/apache.conf.erb'),  #
     require => Package['httpd'],
-  }l
+  }
 
   file { '/var/www/html/index.html':
     ensure  => file,
