@@ -3,6 +3,9 @@ class apache {
   include apache::config
   include apache::service
   include apache::vhosts
-  include apache::vhost
+  class { "apache::vhost":
+    servername => lookup("apache::vhosts::servername"),
+    docroot    => lookup("apache::vhosts::docroot")
+  }
 }
 
