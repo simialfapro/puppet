@@ -4,7 +4,10 @@ class apache::vhosts (
   String $server_name   = 'www.example.com',
   String $server_alias  = 'example.com',
 ) {
-
+  file { '/etc/apache2/sites-available':
+    ensure => directory,
+    mode   => '0755',
+  }
   file { '/etc/apache2/sites-available/000-default.conf':
     ensure  => file,
     content => template('apache/vhost.conf.erb'),
