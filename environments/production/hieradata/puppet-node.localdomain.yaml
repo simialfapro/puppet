@@ -1,3 +1,4 @@
+#---puppet-node.localdomain
 apache::server_admin: 'test@example.com'
 apache::document_root: '/var/www/html'
 apache::server_name: 'example.com'
