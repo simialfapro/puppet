@@ -1,6 +1,0 @@
-apache::vhosts:
-  example2.com:
-    servername: 'example2.com'
-    docroot: '/var/www/example2'
-    port: '80'
-    ssl: false
