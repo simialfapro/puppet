@@ -3,9 +3,12 @@ class apache {
   include apache::config
   include apache::service
   include apache::vhosts
-  class { "apache::vhost":
-    servername => lookup("apache::vhosts::servername"),
-    docroot    => lookup("apache::vhosts::docroot")
+  $vhosts = lookup('apache::vhosts')
+  apache::vhost { $vhosts:
+    servername => $vhosts['servername'],
+    docroot    => $vhosts['docroot'],
+    port       => $vhosts['port'],
+    ssl        => $vhosts['ssl'],
   }
 }
 
