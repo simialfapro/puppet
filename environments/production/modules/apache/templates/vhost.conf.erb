@@ -3,11 +3,23 @@
 #@server_name: Der Haupt-Server-Name für den virtuellen Host.
 #@server_alias: Alternative Server-Namen (z.B. www.example.com und example.com).
 
-<VirtualHost *:80>
-  ServerAdmin <%= @server_admin %>
-  DocumentRoot <%= @document_root %>
-  ServerName <%= @server_name %>
-  ServerAlias <%= @server_alias %>
-  ErrorLog ${APACHE_LOG_DIR}/error.log
-  CustomLog ${APACHE_LOG_DIR}/access.log combined
+<VirtualHost *:<%= @port %>>
+  ServerName <%= @servername %>
+  DocumentRoot <%= @docroot %>
+
+  <Directory <%= @docroot %>>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+  </Directory>
+
+  ErrorLog ${APACHE_LOG_DIR}/<%= @servername %>-error.log
+  CustomLog ${APACHE_LOG_DIR}/<%= @servername %>-access.log combined
+
+  <% if @ssl -%>
+  SSLEngine on
+  SSLCertificateFile /etc/ssl/certs/<%= @servername %>.crt
+  SSLCertificateKeyFile /etc/ssl/private/<%= @servername %>.key
+  <% end -%>
+
 </VirtualHost>
