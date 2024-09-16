@@ -4,6 +4,3 @@ node default {
   include apache
 }
 
-node 'puppet-node.localdomain' {
-  include apache
-}
