@@ -9,7 +9,7 @@
   ServerName <%= @server_name %>
   ServerAlias <%= @server_alias %>
 
-  <Directory <%= @document_root %>>>
+  <Directory "<%= @document_root %>">
     AllowOverride All
     Require all granted
   </Directory>
