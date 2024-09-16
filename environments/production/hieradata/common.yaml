@@ -1,4 +1,4 @@
-apache::server_admin: 'test@example.com'
-apache::document_root: '/var/www/html'
-apache::server_name: 'example.com'
-apache::server_alias: 'www.example.com'
+apache::vhosts::server_admin: 'admin@example.com'
+apache::vhosts::document_root: '/var/www/html'
+apache::vhosts::server_name: 'example.com'
+apache::vhosts::server_alias: 'www.example.com'
