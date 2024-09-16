@@ -2,12 +2,9 @@
 classes:
   - apache:vhost
 
-apache::vhosts:
-  - servername: ['example.com']
-    docroot: ['/var/www/example']
-    port: '80'
-    ssl: false
-  - servername: ['sub.example.com']
-    docroot: ['/var/www/sub']
+apache::vhost:
+  'test.com':
+    servername: ['test.com']
+    docroot: ['/var/www/test']
     port: '80'
     ssl: false
