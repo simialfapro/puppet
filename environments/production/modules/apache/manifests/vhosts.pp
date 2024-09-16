@@ -1,4 +1,4 @@
-class apache::vhost {
+class apache::vhosts {
   $server_admin  = 'admin@example.com'
   $document_root = '/var/www/html'
   $server_name   = 'www.example.com'
