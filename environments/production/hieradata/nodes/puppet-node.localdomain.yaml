@@ -1,15 +1,12 @@
----
 apache::vhosts:
   example1.com:
-    server_admin: 'test@example.com'
-    document_root: '/var/www/html'
-    server_name: 'test.com'
-    server_alias: 'www.example.com'
+    servername: 'example1.com'
+    docroot: '/var/www/example1'
+    port: '80'
+    ssl: false
+
   example2.com:
-    server_admin: 'admin@example.com'
-    document_root: '/var/www/html'
-    server_name: 'test2.com'
-    server_alias: 'www.example.com'
-
-
-
+    servername: 'example2.com'
+    docroot: '/var/www/example2'
+    port: '443'
+    ssl: true
