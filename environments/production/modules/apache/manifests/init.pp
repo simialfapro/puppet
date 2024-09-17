@@ -2,8 +2,6 @@ class apache {
   include apache::install
   include apache::config
   include apache::service
-  include apache::vhosts
-  include apache::vhost
   # Abrufen der VHost-Daten aus Hiera
   $vhosts = lookup('apache::vhosts', { 'default_value' => {} })
   notify { "VHosts data: ${vhosts}": }
