@@ -16,7 +16,7 @@ class apache::vhosts (
   }
 }
 
-define apache::vhost (
+define apache::vhosts::vhosts (
   Integer $port,
   String[1] $docroot,
   String[1] $servername = $title,
