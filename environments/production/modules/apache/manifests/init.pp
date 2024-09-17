@@ -8,13 +8,11 @@ class apache {
   notify { "VHosts data: ${vhosts}": }
   # Iteration über die VHosts und Erstellen jedes VHosts
   $vhosts['vhosts'].each |$name, $vhost| {
-    class { 'apache': 
-      vhosts => {
-        servername =>  $vhost['servername'],
-        docroot    => $vhost['docroot'],
-        port       => $vhost['port'],
-        ssl        => $vhost['ssl'],
-      }
+    apache::vhost { $vhost['servername']:
+      servername => $vhost['servername'],
+      docroot    => $vhost['docroot'],
+      port       => $vhost['port'],
+      ssl        => $vhost['ssl'],
     }
   }
 }
