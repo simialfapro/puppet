@@ -7,7 +7,7 @@ class apache::vhosts (
   # Verwende `create_resources`, um dynamisch VHosts aus den Hiera-Daten zu erstellen
   #create_resources('apache::vhost', $vhosts)
     $vhosts['vhosts'].each |$name, $vhost| {
-    apache::vhosts::vhost { "/etc/apache2/sites-enabled/${servername}.conf":
+    apache::vhosts::vhost { "/etc/apache2/sites-enabled/${name}.conf":
       port       => $vhost['port'],
       docroot    => $vhost['docroot'],
       servername => $vhost['servername'],
