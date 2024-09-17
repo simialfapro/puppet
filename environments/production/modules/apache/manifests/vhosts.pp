@@ -1,11 +1,6 @@
 class apache::vhosts (
   $vhosts,
 ) {
-  # Lese die VHosts-Daten aus Hiera. Falls keine vorhanden sind, wird ein leeres Hash zurückgegeben.
-  #$vhosts = lookup('apache::vhosts', {})
-  #notify {"vhosts: $vhosts": }
-  # Verwende `create_resources`, um dynamisch VHosts aus den Hiera-Daten zu erstellen
-  #create_resources('apache::vhost', $vhosts)
     $vhosts['vhosts'].each |$name, $vhost| {
     apache::vhosts::vhost { "/etc/apache2/sites-enabled/${name}.conf":
       port       => $vhost['port'],
@@ -22,10 +17,9 @@ define apache::vhosts::vhost (
   String[1] $servername,
   Boolean $ssl,
 ) {
-  # the template used below can access all of the parameters and variable from above.
   file { "${name}":
     ensure  => present,
-    content => template('apache/vhost.conf.erb'),  # Verweis auf das Template
-    notify  => Service['apache2'],  # Neustart von Apache nach Änderungen
+    content => template('apache/vhost.conf.erb'),
+    notify  => Service['apache2'],
   }
 }
