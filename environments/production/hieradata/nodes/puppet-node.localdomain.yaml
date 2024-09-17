@@ -1,6 +1,6 @@
 ---
 classes:
-  - apache:vhost
+  - apache
 
 apache::vhosts:
   - servername: 'example.com'
