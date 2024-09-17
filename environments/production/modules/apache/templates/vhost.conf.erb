@@ -3,7 +3,40 @@
 #@server_name: Der Haupt-Server-Name für den virtuellen Host.
 #@server_alias: Alternative Server-Namen (z.B. www.example.com und example.com).
 
-<VirtualHost *:<%= @port %>>
+<% if @ssl -%>
+# SSL aktiviert: HTTP-Weiterleitung von Port 80 auf 443
+<VirtualHost *:80>
+  ServerName <%= @servername %>
+  DocumentRoot <%= @docroot %>
+
+  # Weiterleitung von HTTP auf HTTPS
+  Redirect permanent / https://<%= @servername %>/
+
+  ErrorLog ${APACHE_LOG_DIR}/<%= @servername %>-error.log
+  CustomLog ${APACHE_LOG_DIR}/<%= @servername %>-access.log combined
+</VirtualHost>
+
+<VirtualHost *:443>
+  ServerName <%= @servername %>
+  DocumentRoot <%= @docroot %>
+
+  <Directory <%= @docroot %>>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+  </Directory>
+
+  ErrorLog ${APACHE_LOG_DIR}/<%= @servername %>-ssl-error.log
+  CustomLog ${APACHE_LOG_DIR}/<%= @servername %>-ssl-access.log combined
+
+  SSLEngine on
+  SSLCertificateFile /etc/ssl/certs/<%= @servername %>.crt
+  SSLCertificateKeyFile /etc/ssl/private/<%= @servername %>.key
+</VirtualHost>
+
+<% else -%>
+# Kein SSL: Einfacher VirtualHost auf Port 80
+<VirtualHost *:80>
   ServerName <%= @servername %>
   DocumentRoot <%= @docroot %>
 
@@ -15,11 +48,6 @@
 
   ErrorLog ${APACHE_LOG_DIR}/<%= @servername %>-error.log
   CustomLog ${APACHE_LOG_DIR}/<%= @servername %>-access.log combined
-
-  <% if @ssl -%>
-  SSLEngine on
-  SSLCertificateFile /etc/ssl/certs/<%= @servername %>.crt
-  SSLCertificateKeyFile /etc/ssl/private/<%= @servername %>.key
-  <% end -%>
-
 </VirtualHost>
+
+<% end -%>
