@@ -23,7 +23,7 @@ define apache::vhosts::vhost (
   Boolean $ssl,
 ) {
   # the template used below can access all of the parameters and variable from above.
-  file { *${name}*:
+  file { "${name}":
     ensure  => present,
     content => template('apache/vhost.conf.erb'),  # Verweis auf das Template
     notify  => Service['apache2'],  # Neustart von Apache nach Änderungen
