@@ -4,14 +4,9 @@ class apache {
   include apache::service
   $vhosts = lookup('apache::vhosts', { 'default_value' => {} })
   notify { "VHosts data: ${vhosts}": }
+  class{ "apache::vhosts":
+    vhosts => $vhosts,
+  } 
   # Iteration über die VHosts und Erstellen jedes VHosts
-  $vhosts['vhosts'].each |$name, $vhost| {
-    class { 'apache::vhost':
-      servername => $vhost['servername'],
-      docroot    => $vhost['docroot'],
-      port       => $vhost['port'],
-      ssl        => $vhost['ssl'],
-    }
-  }
 }
 
