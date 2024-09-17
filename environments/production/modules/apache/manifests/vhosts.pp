@@ -7,7 +7,7 @@ class apache::vhosts (
   # Verwende `create_resources`, um dynamisch VHosts aus den Hiera-Daten zu erstellen
   #create_resources('apache::vhost', $vhosts)
     $vhosts['vhosts'].each |$name, $vhost| {
-    apache::vhosts::vhost {
+    apache::vhosts::vhost { "/etc/apache2/sites-enabled/${servername}.conf":
       port       => $vhost['port'],
       docroot    => $vhost['docroot'],
       servername => $vhost['servername'],
@@ -23,7 +23,7 @@ define apache::vhosts::vhost (
   Boolean $ssl,
 ) {
   # the template used below can access all of the parameters and variable from above.
-  file { "/etc/apache2/sites-enabled/${servername}.conf":
+  file { *$name*:
     ensure  => file,
     content => template('apache/vhost.conf.erb'),  # Verweis auf das Template
     notify  => Service['apache2'],  # Neustart von Apache nach Änderungen
