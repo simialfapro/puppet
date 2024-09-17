@@ -1,6 +1,6 @@
 class apache::vhost (
-  Array $servername,
-  Array $docroot,
+  String $servername,
+  String $docroot,
   Optional[String] $port = '80',
   Optional[Array] $ssl = false,
 ) {
