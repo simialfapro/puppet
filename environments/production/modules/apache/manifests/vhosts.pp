@@ -21,6 +21,7 @@ define apache::vhost (
   String[1] $docroot,
   String[1] $servername = $title,
   String $vhost_name = '*',
+  Boolean $ssl,
 ) {
   include apache # contains package['httpd'] and service['httpd']
   include apache::params # contains common config settings
@@ -28,13 +29,9 @@ define apache::vhost (
   $vhost_dir = $apache::params::vhost_dir
 
   # the template used below can access all of the parameters and variable from above.
-  file { "${vhost_dir}/${servername}.conf":
+  file { "/etc/apache2/sites-enabled/${servername}.conf":
     ensure  => file,
-    owner   => 'www',
-    group   => 'www',
-    mode    => '0644',
-    content => template('apache/vhost.conf.erb'),
-    require  => Package['apache2'],
-    notify    => Service['apache2'],
+    content => template('apache/vhost.conf.erb'),  # Verweis auf das Template
+    notify  => Service['apache2'],  # Neustart von Apache nach Änderungen
   }
 }
