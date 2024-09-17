@@ -1,5 +1,5 @@
 ---
-apache::vhosts:
+apache:
   vhosts:
     example_com:
       servername: 'example.com'
