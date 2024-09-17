@@ -5,6 +5,7 @@ class apache {
   include apache::vhosts
   include apache::vhost
   $vhosts = lookup('apache::vhosts')
+  notify { "Vhosts Data: ${vhosts}": }
 
   $vhosts.each |$vhost| {
     apache::vhost { $vhost['servername']:
