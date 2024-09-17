@@ -3,7 +3,7 @@ apache::vhosts:
   vhosts:
     example_com:
       docroot: '/var/www/example'
-      ssl: true
+      ssl: false
     sub_example_com:
       docroot: '/var/www/sub'
       ssl: false
