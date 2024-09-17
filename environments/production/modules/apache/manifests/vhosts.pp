@@ -16,10 +16,10 @@ class apache::vhosts (
   }
 }
 
-define apache::vhosts::vhost (
+define apache::vhosts::vhost ( 
   Integer $port,
   String[1] $docroot,
-  String[1] $servername = $title,
+  String[1] $servername,
   Boolean $ssl,
 ) {
   # the template used below can access all of the parameters and variable from above.
