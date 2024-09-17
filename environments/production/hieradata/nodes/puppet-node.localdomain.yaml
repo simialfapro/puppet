@@ -2,11 +2,9 @@
 apache::vhosts:
   vhosts:
     example_com:
-      servername: 'example.com'
       docroot: '/var/www/example'
       ssl: true
     sub_example_com:
-      servername: 'test.example.com'
       docroot: '/var/www/sub'
       ssl: false
 

@@ -10,7 +10,7 @@ class apache::vhosts (
     apache::vhosts::vhost { "/etc/apache2/sites-enabled/${name}.conf":
       port       => $port,
       docroot    => $vhost['docroot'],
-      servername => $vhost['servername'],
+      servername => $name,
       ssl        => $vhost['ssl'],
     }
   }
