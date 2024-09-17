@@ -2,7 +2,8 @@ class apache {
   include apache::install
   include apache::config
   include apache::service
-  $vhosts = lookup('apache::vhosts', { 'default_value' => [] })
+  include apache::vhost
+ /* $vhosts = lookup('apache::vhosts', { 'default_value' => [] })
   notify { "VHosts data: ${vhosts}": }
   # Iteration über die VHosts und Erstellen jedes VHosts
   $vhosts['vhosts'].each |$name, $vhost| {
@@ -12,6 +13,6 @@ class apache {
       port       => $vhost['port'],
       ssl        => $vhost['ssl'],
     }
-  }
+  }*/ 
 }
 
