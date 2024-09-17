@@ -3,6 +3,7 @@ class apache {
   include apache::config
   include apache::service
   include apache::vhosts
+  include apache::vhost
   $vhosts = lookup('apache::vhosts')
 
   $vhosts.each |$vhost| {
