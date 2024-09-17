@@ -4,7 +4,7 @@ class apache {
   include apache::service
   # Abrufen der VHost-Daten aus Hiera
   
-  $vhosts = lookup('apache::vhosts', { 'default_value' => {} })
+  $vhosts = lookup('apache::vhosts', { 'default_value' => [] })
   notify { "VHosts data: ${vhosts}": }
   # Iteration über die VHosts und Erstellen jedes VHosts
   $vhosts['vhosts'].each |$name, $vhost| {
