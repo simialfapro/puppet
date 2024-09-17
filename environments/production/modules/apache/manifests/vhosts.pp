@@ -1,5 +1,5 @@
 class apache::vhosts (
-  $vhost,
+  $vhosts,
 ) {
   # Lese die VHosts-Daten aus Hiera. Falls keine vorhanden sind, wird ein leeres Hash zurückgegeben.
   #$vhosts = lookup('apache::vhosts', {})
