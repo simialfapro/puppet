@@ -4,11 +4,9 @@ apache::vhosts:
     example_com:
       servername: 'example.com'
       docroot: '/var/www/example'
-      port: 80
       ssl: false
     sub_example_com:
       servername: 'sub.example.com'
       docroot: '/var/www/sub'
-      port: 80
       ssl: false
 
