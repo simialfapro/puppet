@@ -5,6 +5,8 @@ apache::vhosts:
       servername: 'example.com'
       docroot: '/var/www/example'
       ssl: false
+      redirect: true 
+      backend: '3dbambuu.ch'
     sub_example_com:
       servername: 'test.example.com'
       docroot: '/var/www/sub'
