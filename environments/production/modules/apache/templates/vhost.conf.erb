@@ -9,7 +9,8 @@
   Redirect permanent / <%= @backend %>
   <% else -%>
   # Weiterleitung von HTTP auf HTTPS
-  Redirect permanent / https://<%= @servername %> 
+Redirect permanent / <%= "https://#{@backend}" %>
+
   <% end -%>
 
   ErrorLog ${APACHE_LOG_DIR}/<%= @servername %>-error.log
