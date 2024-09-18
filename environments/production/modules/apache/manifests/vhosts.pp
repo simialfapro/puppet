@@ -24,8 +24,13 @@ define apache::vhosts::vhost (
   String[1] $servername,
   Boolean $ssl,
   Boolean $redirect,
-  String[1] $backend,
+  Optional[String[1]] $backend = undef,
 ) {
+  
+  if $redirect and $backend == undef {
+    fail("Parameter 'backend' is required when 'redirect' is true.")
+  }
+
   file { "${name}":
     ensure  => present,
     content => template('apache/vhost.conf.erb'),
