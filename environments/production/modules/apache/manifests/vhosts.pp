@@ -23,7 +23,7 @@ define apache::vhosts::vhost (
   String[1] $docroot,
   String[1] $servername,
   Boolean $ssl,
-  Boolean $redirect,
+  Boolean $redirect = false,
   Optional[String[1]] $backend = undef,
 ) {
   
