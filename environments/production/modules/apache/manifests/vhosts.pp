@@ -27,7 +27,7 @@ define apache::vhosts::vhost (
   Optional[String[1]] $backend = undef,
 ) {
   
-  if $redirect and $backend == undef {
+  if $redirect == true and $backend == undef {
     fail("Parameter 'backend' is required when 'redirect' is true.")
   }
 
