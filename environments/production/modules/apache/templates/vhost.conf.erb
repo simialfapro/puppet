@@ -1,20 +1,21 @@
-#@server_admin: E-Mail-Adresse des Server-Administrators.
-#@document_root : Das Verzeichnis, das als Dokumentwurzel für den virtuellen Host dient.
-#@server_name: Der Haupt-Server-Name für den virtuellen Host.
-#@server_alias: Alternative Server-Namen (z.B. www.example.com und example.com).
-
 <% if @ssl -%>
 # SSL aktiviert: HTTP-Weiterleitung von Port 80 auf 443
 <VirtualHost *:80>
   ServerName <%= @servername %>
   DocumentRoot <%= @docroot %>
 
+  <% if @redirect -%>
+  # Weiterleitung auf den Backend-Server
+  Redirect permanent / <%= @backend %>
+  <% else -%>
   # Weiterleitung von HTTP auf HTTPS
   Redirect permanent / https://<%= @servername %>/
+  <% end -%>
 
   ErrorLog ${APACHE_LOG_DIR}/<%= @servername %>-error.log
   CustomLog ${APACHE_LOG_DIR}/<%= @servername %>-access.log combined
 </VirtualHost>
+
 
 <VirtualHost *:443>
   ServerName <%= @servername %>
@@ -45,6 +46,11 @@
     AllowOverride All
     Require all granted
   </Directory>
+
+  <% if @redirect -%>
+  # Weiterleitung auf den Backend-Server
+  Redirect permanent / <%= @backend %>
+  <% end -%>
 
   ErrorLog ${APACHE_LOG_DIR}/<%= @servername %>-error.log
   CustomLog ${APACHE_LOG_DIR}/<%= @servername %>-access.log combined

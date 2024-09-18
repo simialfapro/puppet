@@ -12,6 +12,8 @@ class apache::vhosts (
       docroot    => $vhost['docroot'],
       servername => $vhost['servername'],
       ssl        => $vhost['ssl'],
+      redirect   => $vhost['redirect'],
+      backend    => $vhost['backend'],
     }
   }
 }
@@ -21,6 +23,8 @@ define apache::vhosts::vhost (
   String[1] $docroot,
   String[1] $servername,
   Boolean $ssl,
+  Boolean $redirect,
+  String[1] $backend,
 ) {
   file { "${name}":
     ensure  => present,
