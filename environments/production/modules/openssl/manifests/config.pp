@@ -1,12 +1,12 @@
 class openssl::config (
-  String $country        = 'CH',
-  String $state          = 'Zürich',
-  String $locality       = 'Zürich',
-  String $organization   = '3dbambuu',
-  String $common_name    = $trusted['certname'],
-  String $cert_path      = '/etc/ssl/certs',
-  String $key_path       = '/etc/ssl/private',
-  Integer $days          = 365,           
+  String $country      = 'CH',
+  String $state        = 'Zürich',
+  String $locality     = 'Zürich',
+  String $organization = '3dbambuu',
+  String $common_name  = $trusted['certname'],  # Verwendet den FQDN des Nodes
+  String $cert_path    = '/etc/ssl/certs',
+  String $key_path     = '/etc/ssl/private',
+  Integer $days        = 365, 
 ) {
 }
 

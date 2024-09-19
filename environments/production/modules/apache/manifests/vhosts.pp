@@ -38,8 +38,15 @@ define apache::vhosts::vhost (
 
   if $ssl == true{
       openssl::config::generate { "Generate config":
-      cert_path => $cert_path,
-      key_path  => $key_path,
+      cert_path    => $cert_path,
+      key_path     => $key_path,
+      common_name  => $servername, 
+      country      => 'CH',      
+      state        => 'Zürich',
+      locality     => 'Zürich',
+      organization => '3dbambuu',
+      days         => 365,
+    }
     }
   }
   file { "${name}":
