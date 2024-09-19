@@ -40,12 +40,6 @@ define apache::vhosts::vhost (
       openssl::config::generate { "Generate config":
       cert_path    => $cert_path,
       key_path     => $key_path,
-      common_name  => $servername, # Setze den Common Name auf den Servernamen
-      country      => 'CH',        # Beispielwerte, hier könntest du sie auch dynamisch setzen
-      state        => 'Zürich',
-      locality     => 'Zürich',
-      organization => '3dbambuu',
-      days         => 365,
     }
   }
   file { "${name}":
