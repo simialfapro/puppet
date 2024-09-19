@@ -37,10 +37,9 @@ define apache::vhosts::vhost (
   }
 
   if $ssl == true{
-    class { 'openssl':
-      cert_path   => $cert_path,
-      key_path    => $key_path,
-      common_name => $servername,
+      openssl::config::generate { "Generate config":
+      cert_path => $cert_path,
+      key_path  => $key_path,
     }
   }
   file { "${name}":
