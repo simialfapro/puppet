@@ -12,6 +12,8 @@ class apache::vhosts (
       docroot    => $vhost['docroot'],
       servername => $vhost['servername'],
       ssl        => $vhost['ssl'],
+      cert_path  => $vhost['cert_path'],
+      cert_key   => $vhost['cert_key'],
       redirect   => $vhost['redirect'],
       backend    => $vhost['backend'],
     }
@@ -23,8 +25,11 @@ define apache::vhosts::vhost (
   String[1] $docroot,
   String[1] $servername,
   Boolean $ssl,
+  Optional $cert_path = "/etc/ssl/cert/${servername}",
+  Optional $cert_key = "/etc/ssl/private/${servername}",
   Boolean $redirect = false,
   Optional[String[1]] $backend = undef,
+
 ) {
   
   if $redirect == true and $backend == undef {

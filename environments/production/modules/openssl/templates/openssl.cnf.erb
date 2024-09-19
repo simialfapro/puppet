@@ -1,0 +1,13 @@
+[ req ]
+distinguished_name  = req_distinguished_name
+prompt              = no
+output_password     = no
+default_bits        = 2048
+default_md          = sha256
+
+[ req_distinguished_name ]
+C  = <%= @country %>
+ST = <%= @state %>
+L  = <%= @locality %>
+O  = <%= @organization %>
+CN = <%= @common_name %>

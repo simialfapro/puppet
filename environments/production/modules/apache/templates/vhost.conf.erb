@@ -31,8 +31,8 @@
   CustomLog ${APACHE_LOG_DIR}/<%= @servername %>-ssl-access.log combined
 
   SSLEngine on
-  SSLCertificateFile /etc/ssl/certs/<%= @servername %>.crt
-  SSLCertificateKeyFile /etc/ssl/private/<%= @servername %>.key
+  SSLCertificateFile <%= @cert_path %>
+  SSLCertificateKeyFile <%= @key_path %>
 </VirtualHost>
 
 <% else -%>
