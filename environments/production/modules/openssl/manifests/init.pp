@@ -3,7 +3,7 @@ class openssl (
   String $state          = 'Zürich',
   String $locality       = 'Zürich',
   String $organization   = '3dbambuu',
-  String $common_name    = $facts['fqdn'],
+ String $common_name    = $trusted['certname'],
   String $cert_path      = '/etc/ssl/certs',
   String $key_path       = '/etc/ssl/private',
   Integer $days          = 365,             
