@@ -26,7 +26,7 @@ define apache::vhosts::vhost (
   String[1] $servername,
   Boolean $ssl,
   Optional $cert_path = "/etc/ssl/cert/${servername}",
-  Optional $cert_key = "/etc/ssl/private/${servername}",
+  Optional $key_path = "/etc/ssl/private/${servername}",
   Boolean $redirect = false,
   Optional[String[1]] $backend = undef,
 
