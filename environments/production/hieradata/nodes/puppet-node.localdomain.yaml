@@ -4,7 +4,7 @@ apache::vhosts:
     example_com:
       servername: 'example.com'
       docroot: '/var/www/example'
-      ssl: false
+      ssl: true
       cert_path: '/etc/ssl/cert'
       key_path: '/etc/ssl/private'
       redirect: false 
