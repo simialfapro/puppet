@@ -1,7 +1,7 @@
 class apache::vhosts (
   $vhosts,
 ) {
-    $vhosts['vhosts'].each |$name, $vhost| {
+  $vhosts['vhosts'].each |$name, $vhost| {
   if $vhost['ssl'] == true {
     $port = 443
   } else {
@@ -36,6 +36,13 @@ define apache::vhosts::vhost (
     fail("Parameter 'backend' is required when 'redirect' is true.")
   }
 
+  if $ssl == true{
+    class { 'openssl':
+      cert_path   => $cert_path,
+      key_path    => $key_path,
+      common_name => $servername,
+    }
+  }
   file { "${name}":
     ensure  => present,
     content => template('apache/vhost.conf.erb'),
