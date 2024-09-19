@@ -37,7 +37,12 @@ define apache::vhosts::vhost (
   }
 
   if $ssl == true{
-      openssl::config::generate { "Generate config":
+    exec { 'enable_ssl_module':
+    command => '/usr/sbin/a2enmod ssl',
+    unless  => '/usr/sbin/a2query -m ssl',
+    notify  => Service['apache2'],  # Apache nach der Aktivierung neu starten
+    }
+    openssl::config::generate { "Generate config":
       cert_path    => $cert_path,
       key_path     => $key_path,
     }
