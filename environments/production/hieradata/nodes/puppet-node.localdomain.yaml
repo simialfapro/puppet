@@ -7,7 +7,7 @@ apache::vhosts:
       ssl: false
       cert_path: '/etc/ssl/cert'
       key_path: '/etc/ssl/private'
-      redirect: true 
+      redirect: false 
     sub_example_com:
       servername: 'test.example.com'
       docroot: '/var/www/sub'
