@@ -1,12 +1,12 @@
 class openssl::config (
-  String $country,
-  String $state,
-  String $locality,
-  String $organization,
-  String $common_name,
-  String $cert_path,
-  String $key_path,
-  Integer $days,             
+  String $country        = 'CH',
+  String $state          = 'Zürich',
+  String $locality       = 'Zürich',
+  String $organization   = '3dbambuu',
+  String $common_name    = $trusted['certname'],
+  String $cert_path      = '/etc/ssl/certs',
+  String $key_path       = '/etc/ssl/private',
+  Integer $days          = 365,           
 ) {
 }
 
