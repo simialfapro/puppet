@@ -32,7 +32,7 @@
 
   SSLEngine on
   SSLCertificateFile <%= @cert_path %>/<%= @servername %>.crt
-  SSLCertificateKeyFile <%= @key_path %>/<%= @servername %>.crt
+  SSLCertificateKeyFile <%= @key_path %>/<%= @servername %>.key
 </VirtualHost>
 
 <% else -%>
