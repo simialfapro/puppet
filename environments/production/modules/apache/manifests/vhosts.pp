@@ -13,7 +13,7 @@ class apache::vhosts (
       servername => $vhost['servername'],
       ssl        => $vhost['ssl'],
       cert_path  => $vhost['cert_path'],
-      cert_key   => $vhost['cert_key'],
+      key_path   => $vhost['key_path'],
       redirect   => $vhost['redirect'],
       backend    => $vhost['backend'],
     }
